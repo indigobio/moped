@@ -65,8 +65,8 @@ module Moped
     #
     # @since 1.0.0
     def logger
-      return @logger if defined?(@logger)
-      @logger = rails_logger || default_logger
+      return @logger unless @logger.nil?
+      @logger = Moped.rails_logger || Moped.default_logger
     end
 
     # Get the rails logger.
